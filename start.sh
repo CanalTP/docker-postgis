@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DATADIR="/var/lib/postgresql/9.4/main"
-CONF="/etc/postgresql/9.4/main/postgresql.conf"
-POSTGRES="/usr/lib/postgresql/9.4/bin/postgres"
-INITDB="/usr/lib/postgresql/9.4/bin/initdb"
+DATADIR="/var/lib/postgresql/9.5/main"
+CONF="/etc/postgresql/9.5/main/postgresql.conf"
+POSTGRES="/usr/lib/postgresql/9.5/bin/postgres"
+INITDB="/usr/lib/postgresql/9.5/bin/initdb"
 
 # test if DATADIR is existent
 if [ ! -d $DATADIR ]; then
@@ -24,3 +24,4 @@ trap "echo \"Sending SIGTERM to postgres\"; killall -s SIGTERM postgres" SIGTERM
 su postgres sh -c "$POSTGRES -D $DATADIR -c config_file=$CONF" &
 
 wait $!
+
